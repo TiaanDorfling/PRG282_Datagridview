@@ -84,35 +84,8 @@ namespace PRG282_02
 
 		private void populateStudents()
 		{
-			var student = new Student
-			{
-				Name = "Tiaan Dorfling",
-				Id = 1,
-				Age = 20,
-				Course = "BCOMP"
-			};
-
-			students.Add(student);
-
-			student = new Student
-			{
-				Name = "Tiaan Scholtz",
-				Id = 2,
-				Age = 20,
-				Course = "BCOMP"
-			};
-
-			students.Add(student);
-
-			student = new Student
-			{
-				Name = "Thian du Plessis",
-				Id = 3,
-				Age = 21,
-				Course = "BCOMP"
-			};
-
-			students.Add(student);
+			Read read = new Read("Student");
+			students = read.streamRead();
 
 			foreach (Student pupil in students)
 			{
