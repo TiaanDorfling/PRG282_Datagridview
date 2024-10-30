@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//still need a check to ensure id stays unique
 namespace PRG282_02
 {
 	public partial class Form1 : Form
@@ -39,8 +40,10 @@ namespace PRG282_02
 					Course = txtCourse.Text
 				};
 
+				students.Add(student);
 				studentTable.Rows.Add(student.Id, student.Name, student.Age, student.Course);
 
+				save();
 
 				// Clear input fields after adding the student
 				ClearInputFields();
@@ -53,6 +56,8 @@ namespace PRG282_02
 			{
 				MessageBox.Show($"An error occurred: {ex.Message}");
 			}
+
+			save();
 		}
 
 		private void ClearInputFields()
@@ -142,6 +147,8 @@ namespace PRG282_02
 			}
 		}
 
+		
+
 		private void dgvStudents_SelectionChanged(object sender, EventArgs e)
 		{
 			display();
@@ -165,18 +172,58 @@ namespace PRG282_02
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			DataRowView currentRow = (DataRowView)src.Current;
-			currentRow["ID"] = int.Parse(txtID.Text);
+			//should not be able to edit id
+			//currentRow["ID"] = int.Parse(txtID.Text);
 			currentRow["Name"] = txtName.Text;
 			currentRow["Age"] = int.Parse(txtAge.Text);
 			currentRow["Course"] = txtCourse.Text;
 
 			currentRow.EndEdit();
+
+			//create a new student object to replace the old one
+			Student student = new Student();
+			student.Id = int.Parse(currentRow["ID"].ToString());
+			student.Name = currentRow["Name"].ToString();
+			student.Age = int.Parse(currentRow["Age"].ToString());
+			student.Course = currentRow["Course"].ToString();
+
+			int id = int.Parse(currentRow["ID"].ToString());
+	
+			for (int k = 0; k < students.Count; k++)
+			{
+				if (students[k].Id == id)
+				{
+					students.RemoveAt(k);
+					students.Add(student);
+					break;
+				}
+			}
+
+
+			save();
 		}
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			DataRowView currentRow = (DataRowView)src.Current;
+			int id = int.Parse(currentRow["ID"].ToString());
 			currentRow.Delete();
+			//delete student from list to save updated list
+			for (int k = 0; k < students.Count; k++)
+			{
+				if (students[k].Id == id)
+				{
+					students.RemoveAt(k);
+					break;
+				}
+			}
+			save();
+		}
+
+		private void save()
+		{
+			Save save = new Save("student");
+			save.streamWrite(students);
 		}
 	}
 }
