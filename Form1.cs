@@ -118,11 +118,28 @@ namespace PRG282_02
 
 		private void display()
 		{
-			DataRowView currentRow = (DataRowView)src.Current;
-			txtName.Text = currentRow["Name"].ToString();
-			txtID.Text = currentRow["ID"].ToString();
-			txtAge.Text = currentRow["Age"].ToString();
-			txtCourse.Text = currentRow["Course"].ToString();
+			try
+			{
+				if (src.Current != null)
+				{
+					DataRowView currentRow = (DataRowView)src.Current;
+					txtName.Text = currentRow["Name"].ToString();
+					txtID.Text = currentRow["ID"].ToString();
+					txtAge.Text = currentRow["Age"].ToString();
+					txtCourse.Text = currentRow["Course"].ToString();
+				}
+				else
+				{
+					txtName.Text = "";
+					txtID.Text = "";
+					txtAge.Text = "";
+					txtCourse.Text = "";
+				}
+			}
+			catch (Exception error)
+			{
+				Console.WriteLine($"Error: {error.Message}");
+			}
 		}
 
 		private void dgvStudents_SelectionChanged(object sender, EventArgs e)
@@ -154,6 +171,12 @@ namespace PRG282_02
 			currentRow["Course"] = txtCourse.Text;
 
 			currentRow.EndEdit();
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			DataRowView currentRow = (DataRowView)src.Current;
+			currentRow.Delete();
 		}
 	}
 }
