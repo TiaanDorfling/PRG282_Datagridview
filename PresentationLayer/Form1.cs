@@ -198,5 +198,24 @@ namespace PRG282_02
 			Save save = new Save("student");
 			save.streamWrite(students);
 		}
+
+		private void btnGenerateSummary_Click(object sender, EventArgs e)
+		{
+			int stdCount = students.Count;
+			float avgStdAge = 0, stdAgeTotal = 0;
+
+			for (int i = 0; i < students.Count; i++)
+			{
+				stdAgeTotal += students[i].Age;
+			}
+
+			avgStdAge = stdAgeTotal / students.Count;
+
+			txtTotalStudents.Text = stdCount.ToString();
+			txtAvgStdAge.Text = avgStdAge.ToString();
+
+			Save save = new Save();
+			save.GenerateSummary(stdCount, avgStdAge);
+		}
 	}
 }

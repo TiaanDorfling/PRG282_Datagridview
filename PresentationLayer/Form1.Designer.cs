@@ -43,6 +43,11 @@
 			this.btnClear = new System.Windows.Forms.Button();
 			this.btnUpdate = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
+			this.txtAvgStdAge = new System.Windows.Forms.TextBox();
+			this.txtTotalStudents = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.btnGenerateSummary = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -184,11 +189,63 @@
 			this.btnDelete.UseVisualStyleBackColor = true;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 			// 
+			// txtAvgStdAge
+			// 
+			this.txtAvgStdAge.Location = new System.Drawing.Point(533, 375);
+			this.txtAvgStdAge.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.txtAvgStdAge.Name = "txtAvgStdAge";
+			this.txtAvgStdAge.ReadOnly = true;
+			this.txtAvgStdAge.Size = new System.Drawing.Size(100, 22);
+			this.txtAvgStdAge.TabIndex = 24;
+			// 
+			// txtTotalStudents
+			// 
+			this.txtTotalStudents.Location = new System.Drawing.Point(533, 348);
+			this.txtTotalStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.txtTotalStudents.Name = "txtTotalStudents";
+			this.txtTotalStudents.ReadOnly = true;
+			this.txtTotalStudents.Size = new System.Drawing.Size(100, 22);
+			this.txtTotalStudents.TabIndex = 23;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(355, 377);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(135, 16);
+			this.label6.TabIndex = 22;
+			this.label6.Text = "Average Student Age";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(355, 350);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(93, 16);
+			this.label5.TabIndex = 21;
+			this.label5.Text = "Total Students";
+			// 
+			// btnGenerateSummary
+			// 
+			this.btnGenerateSummary.Location = new System.Drawing.Point(359, 314);
+			this.btnGenerateSummary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.btnGenerateSummary.Name = "btnGenerateSummary";
+			this.btnGenerateSummary.Size = new System.Drawing.Size(196, 23);
+			this.btnGenerateSummary.TabIndex = 20;
+			this.btnGenerateSummary.Text = "Generate Summary Report";
+			this.btnGenerateSummary.UseVisualStyleBackColor = true;
+			this.btnGenerateSummary.Click += new System.EventHandler(this.btnGenerateSummary_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.txtAvgStdAge);
+			this.Controls.Add(this.txtTotalStudents);
+			this.Controls.Add(this.label6);
+			this.Controls.Add(this.label5);
+			this.Controls.Add(this.btnGenerateSummary);
 			this.Controls.Add(this.btnDelete);
 			this.Controls.Add(this.btnUpdate);
 			this.Controls.Add(this.btnClear);
@@ -230,6 +287,11 @@
 		private System.Windows.Forms.Button btnClear;
 		private System.Windows.Forms.Button btnUpdate;
 		private System.Windows.Forms.Button btnDelete;
+		private System.Windows.Forms.TextBox txtAvgStdAge;
+		private System.Windows.Forms.TextBox txtTotalStudents;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Button btnGenerateSummary;
 	}
 }
 
